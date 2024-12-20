@@ -24,7 +24,6 @@ String dy = " ";
 String state = " ";
 
 void setup() {
-  // put your setup code here, to run once:
     pinMode(3, OUTPUT);
     pinMode(1, OUTPUT);
     pinMode(2, OUTPUT);    
@@ -40,15 +39,11 @@ void setup() {
 
 
 void loop() {
-  // put your main code here, to run repeatedly:
 
-    
   if (BTserial.available())
     {
         c = BTserial.read();
-        //Serial.write(c);
         numStore += String(c);
-        //Serial.println(numStore);
 
   delay(4);
     }
@@ -62,14 +57,9 @@ void loop() {
     ind3 = numStore.indexOf("}");
     strX = numStore.substring(ind1 + 1, ind2);
     strY = numStore.substring(ind2 + 1, ind3);
-    //Serial.print(strX.toInt());
-    //Serial.println("\t");
-    //Serial.print(strY.toInt());
-    //Serial.println("\t");
     numStore = "";
     dx = "";
-    dy = "";
-    //state = "";    
+    dy = "";    
     Serial.println(numStore);
 
 
@@ -138,19 +128,10 @@ void loop() {
     else if (dy.toInt() == 2){
       state += 8; //right and forward
     }
-  //Serial.println(state.toInt());
-  //state = "";
   } 
   Serial.println(state.toInt());
   Serial.write(state.toInt());
   state = "";
-  // declare the variable "color"            // set the variable to any value in the range [0-255]
-  
-  //Serial.println(state.toInt());
-      // transmit the byte-variable "color"
-  //Serial.println(dx.toInt());
-
-  //Serial.println(dy.toInt());
 
 
 delay(75);
